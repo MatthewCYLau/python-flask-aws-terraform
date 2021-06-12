@@ -22,13 +22,14 @@ virtualenv -p /usr/bin/python3 venv # create new virtual environment venv
 source venv/bin/activate # activate venv
 pip3 install -r requirements.txt # installs python packages
 python3 app.py # visit app at http://localhost:5000/ping
+deactivate # deactivates venv
 ```
 
 ### Installs new packages
 
 ```bash
-pip install boto # installs new Python package
-pip freeze > requirements.txt # updates requirements.txt
+pip3 install boto # installs new Python package
+pip3 freeze > requirements.txt # updates requirements.txt
 ```
 
 ### Run app in container
