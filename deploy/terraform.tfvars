@@ -1,0 +1,6 @@
+default_region      = "us-east-1"
+docker_username     = "matlau"
+github_username     = "MatthewCYLau"
+github_project_name = "python-flask-aws-terraform"
+app_name            = "python-flask-app"
+environment         = "staging"
