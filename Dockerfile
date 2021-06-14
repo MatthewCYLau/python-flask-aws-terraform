@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM python:3.6.12-alpine
 
 RUN apk add --no-cache python3-dev py3-pip \
     && pip3 install --upgrade pip
@@ -11,5 +11,7 @@ RUN pip3 --no-cache-dir install -r requirements.txt
 
 EXPOSE 5000
 
-ENTRYPOINT ["python3"]
-CMD ["app.py"]
+RUN ["chmod", "+x", "./entrypoint.sh"]
+
+ENTRYPOINT ["./entrypoint.sh"]
+

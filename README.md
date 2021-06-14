@@ -25,7 +25,7 @@ python3 app.py # visit app at http://localhost:5000/ping
 deactivate # deactivates venv
 ```
 
-### Installs new packages
+### Install new packages
 
 ```bash
 pip3 install boto # installs new Python package
