@@ -39,6 +39,8 @@ docker build -t matlau/python-flask-aws:latest . # build Docker image
 docker run -p 5000:5000 matlau/python-flask-aws # visit app at http://localhost:5000/ping
 ```
 
+Alternatively, run `docker-compose up` to start app in container
+
 ## Configuration
 
 - Create an [S3 bucket](https://www.terraform.io/docs/language/settings/backends/s3.html) to store Terraform state. Populate bucket name in `01-main.tf`

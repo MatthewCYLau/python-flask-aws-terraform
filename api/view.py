@@ -1,4 +1,4 @@
-from app import app
+from api import app
 
 
 @app.route("/ping")
