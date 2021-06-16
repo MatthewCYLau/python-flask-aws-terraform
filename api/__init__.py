@@ -11,4 +11,10 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 db = SQLAlchemy(app)
 
 
+@app.route("/ping")
+def ping():
+
+    return "pong!"
+
+
 from api.todo import views
