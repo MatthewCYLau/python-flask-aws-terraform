@@ -4,10 +4,16 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-# when running app inside container, connect to @db:5432
+# when running app inside docker compose, connect to @db:5432
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 db = SQLAlchemy(app)
+
+
+from api.todo.models import Todo
+
+db.create_all()
+db.session.commit()
 
 
 @app.route("/ping")
