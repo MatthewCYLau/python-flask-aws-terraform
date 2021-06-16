@@ -1,6 +1,6 @@
 FROM python:3.6.12-alpine
 
-RUN apk add --no-cache python3-dev py3-pip \
+RUN apk add --no-cache python3-dev py3-pip build-base \
     && pip3 install --upgrade pip
 
 WORKDIR /app
