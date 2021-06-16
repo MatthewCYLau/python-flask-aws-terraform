@@ -10,7 +10,8 @@ services:
       - .:/app
     depends_on:
       - db
-
+    env_file:
+      - config/.env.dev
   db:
     image: postgres
     ports:
