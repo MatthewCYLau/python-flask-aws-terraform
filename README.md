@@ -17,10 +17,16 @@ pip3 --version # prints pip version
 
 ## Run/Build app locally
 
+- In a seperate terminal window, run `docker-compose -f docker-compose.dev.yml up` to run PostgreSQL database inside a container. Then, return to the original terminal window and run the following commands:
+
 ```bash
 virtualenv -p /usr/bin/python3 venv # create new virtual environment venv
 source venv/bin/activate # activate venv
 pip3 install -r requirements.txt # installs python packages
+python3 # loads Python Interpreter
+from api import db # imports db
+db.create_all() # initialises db
+exit() # exits Python Interpreter
 python3 manage.py # visit app at http://localhost:5000/ping
 deactivate # deactivates venv
 ```
@@ -34,12 +40,12 @@ pip3 freeze > requirements.txt # updates requirements.txt
 
 ### Run app in container
 
+- Run `docker-compose up` to start app in container. Alternatively, you may choose to build, and run the `api` app image:
+
 ```bash
 docker build -t matlau/python-flask-aws:latest . # build Docker image
 docker run -p 5000:5000 matlau/python-flask-aws # visit app at http://localhost:5000/ping
 ```
-
-Alternatively, run `docker-compose up` to start app in container
 
 ## Configuration
 
