@@ -1,14 +1,9 @@
+import requests
+import random
 from api import app
 from api.todo.models import Todo
-import requests
-from flask import jsonify
+from flask import jsonify, request
 from api import db
-
-
-todos = [
-    {"id": 1, "name": "foo", "description": "bar"},
-    {"id": 2, "name": "fooo", "description": "baar"},
-]
 
 
 @app.route("/ping")
@@ -20,20 +15,26 @@ def ping():
 @app.route("/todos", methods=["GET"])
 def list_todos():
 
-    # todos = Todo.query.all()
-    res = requests.get("https://jsonplaceholder.typicode.com/posts")
-
-    if res.status_code == 200:
-        return jsonify(res.json()), 200
-    else:
+    try:
+        todos = Todo.query.all()
+        return jsonify(todos), 200
+    except:
         return "Error fetching data", 500
 
 
 @app.route("/todos", methods=["POST"])
 def add_todo():
-    # todo = Todo(id=1, name="foo", description="bar", completed=False)
-    # db.session.add(todo)
-    # db.session.commit()
 
-    data = todos[0]
-    return jsonify(data), 201
+    id = random.randint(1, 1000)
+    name = request.json["name"]
+    description = request.json["description"]
+    completed = False
+
+    new_todo = Todo(id=id, name=name, description=description, completed=completed)
+
+    try:
+        db.session.add(new_todo)
+        db.session.commit()
+        return jsonify(new_todo), 201
+    except:
+        return "Error creating todo", 500
