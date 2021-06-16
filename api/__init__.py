@@ -10,4 +10,4 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 db = SQLAlchemy(app)
 
 
-from api import views
+from api.todo import views

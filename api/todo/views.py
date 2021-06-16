@@ -1,5 +1,5 @@
 from api import app
-from api.models import Todo
+from api.todo.models import Todo
 from api import db
 
 
