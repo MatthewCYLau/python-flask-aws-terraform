@@ -9,4 +9,4 @@ class Todo(db.Model):
     completed = db.Column(db.Boolean)
 
     def __repr__(self):
-        return self.text
+        return self.name

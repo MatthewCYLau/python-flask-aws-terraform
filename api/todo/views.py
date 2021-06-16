@@ -22,7 +22,7 @@ def list_todos():
 
 @app.route("/todos", methods=["POST"])
 def add_todo():
-    todo = Todo(name="foo", description="bar", completed=False)
+    todo = Todo(id=1, name="foo", description="bar", completed=False)
     db.session.add(todo)
     db.session.commit()
 
