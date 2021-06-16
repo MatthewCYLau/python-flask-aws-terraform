@@ -21,7 +21,7 @@ pip3 --version # prints pip version
 virtualenv -p /usr/bin/python3 venv # create new virtual environment venv
 source venv/bin/activate # activate venv
 pip3 install -r requirements.txt # installs python packages
-python3 app.py # visit app at http://localhost:5000/ping
+python3 manage.py # visit app at http://localhost:5000/ping
 deactivate # deactivates venv
 ```
 
