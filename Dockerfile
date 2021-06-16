@@ -1,6 +1,6 @@
-FROM python:3.6.12-alpine
+FROM python:3.7-alpine
 
-RUN apk add --no-cache python3-dev py3-pip build-base \
+RUN apk add --no-cache python3-dev py3-pip build-base gcc musl-dev postgresql-dev \
     && pip3 install --upgrade pip
 
 WORKDIR /app
