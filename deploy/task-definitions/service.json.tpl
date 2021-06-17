@@ -21,8 +21,8 @@
     "cpu": 1,
     "environment": [
       {
-        "name": "NODE_ENV",
-        "value": "production"
+        "name": "DATABASE_URL",
+        "value": "${database_url}"
       }
     ],
     "ulimits": [
