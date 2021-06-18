@@ -2,6 +2,10 @@
 
 A reference project to deploy a Python Flask app onto Amazon ECS on AWS Fargate with Terraform. Inspired by [this](https://aws.amazon.com/blogs/opensource/deploying-python-flask-microservices-to-aws-using-open-source-tools/) AWS tutorial
 
+A todo app creating, and retrieving data from Amazon RDS
+
+![AWS Architecture](img/aws-flask-rds.JPG)
+
 ## Pre-requisite
 
 - Make sure you have installed Python 3, [pip](https://pip.pypa.io/en/stable/installing/), [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli), [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html#cliv2-mac-prereq), and configured a `default` AWS CLI profile (see doc [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-profiles))
@@ -46,6 +50,8 @@ docker run -p 5000:5000 matlau/python-flask-aws # visit app at http://localhost:
 ## Configuration
 
 - Create an [S3 bucket](https://www.terraform.io/docs/language/settings/backends/s3.html) to store Terraform state. Populate bucket name in `01-main.tf`
+
+- Create a secret on [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) named `RDSPostgresPassword` with key `POSTGRES_PASSWORD`, and your database password as value
 
 - Populate `terraform.tfvars`:
 
