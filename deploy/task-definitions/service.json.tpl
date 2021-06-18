@@ -21,10 +21,22 @@
     "cpu": 1,
     "environment": [
       {
-        "name": "DATABASE_URL",
-        "value": "${database_url}"
+        "name": "DB_ENDPOINT",
+        "value": "${database_endpoint}"
+      },
+       {
+        "name": "DB_NAME",
+        "value": "${database_name}"
+      },
+      {
+        "name": "POSTGRES_USERNAME",
+        "value": "${postgres_username}"
       }
     ],
+    "secrets": [{
+      "name": "POSTGRES_PASSWORD",
+      "valueFrom": "${postgres_password}"
+    }],
     "ulimits": [
       {
         "name": "nofile",

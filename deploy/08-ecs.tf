@@ -5,7 +5,10 @@ data "template_file" "python_app" {
     tag                           = "latest"
     container_name                = var.app_name
     aws_cloudwatch_log_group_name = aws_cloudwatch_log_group.python_app.name
-    database_url                  = "postgresql://${aws_db_instance.postgres.username}:${aws_db_instance.postgres.password}@${aws_db_instance.postgres.endpoint}/${aws_db_instance.postgres.name}"
+    database_endpoint             = aws_db_instance.postgres.endpoint
+    database_name                 = aws_db_instance.postgres.name
+    postgres_username             = aws_db_instance.postgres.username
+    postgres_password             = aws_db_instance.postgres.password
   }
 }
 
