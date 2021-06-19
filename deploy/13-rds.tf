@@ -44,6 +44,6 @@ data "aws_secretsmanager_secret_version" "rds_password" {
   secret_id = "RDSPostgresPassword"
 }
 
-output "postgres_db_endpoint" {
-  value = aws_db_instance.postgres.endpoint
+output "postgres_db_address" {
+  value = aws_db_instance.postgres.address
 }

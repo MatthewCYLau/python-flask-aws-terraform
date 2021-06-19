@@ -21,8 +21,8 @@
     "cpu": 1,
     "environment": [
       {
-        "name": "DB_ENDPOINT",
-        "value": "${database_endpoint}"
+        "name": "DB_ADDRESS",
+        "value": "${database_address}"
       },
        {
         "name": "DB_NAME",

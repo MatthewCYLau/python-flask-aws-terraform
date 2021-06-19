@@ -29,12 +29,11 @@ def get_todo(id):
 @app.route("/todos", methods=["POST"])
 def add_todo():
 
-    id = random.randint(1, 1000)
     name = request.json["name"]
     description = request.json["description"]
     completed = False
 
-    new_todo = Todo(id=id, name=name, description=description, completed=completed)
+    new_todo = Todo(name=name, description=description, completed=completed)
 
     try:
         db.session.add(new_todo)
