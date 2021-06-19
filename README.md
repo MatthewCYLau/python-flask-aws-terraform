@@ -4,7 +4,7 @@ A reference project to deploy a Python Flask app onto Amazon ECS on AWS Fargate 
 
 A todo app creating, and retrieving data from Amazon RDS
 
-![AWS Architecture](img/aws-flask-rds.JPG)
+![AWS Architecture](img/aws-flask-ecs.JPG)
 
 ## Pre-requisite
 
