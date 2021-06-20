@@ -13,7 +13,7 @@ resource "aws_db_instance" "postgres" {
 
 resource "aws_db_subnet_group" "postgres" {
   name       = "postgres-subnet"
-  subnet_ids = [aws_subnet.pub_subnet.id, aws_subnet.pub_subnet2.id]
+  subnet_ids = aws_subnet.private.*.id
 
   tags = {
     Name = "PostgreSQL DB subnet group"
@@ -22,7 +22,7 @@ resource "aws_db_subnet_group" "postgres" {
 
 resource "aws_security_group" "rds" {
   name        = "rds-sg"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = aws_vpc.default.id
   description = "allow inbound access from the ECS only"
 
   ingress {

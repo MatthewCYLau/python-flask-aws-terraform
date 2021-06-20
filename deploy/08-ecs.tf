@@ -5,7 +5,7 @@ data "template_file" "python_app" {
     tag                           = "latest"
     container_name                = var.app_name
     aws_cloudwatch_log_group_name = aws_cloudwatch_log_group.python_app.name
-    database_address             = aws_db_instance.postgres.address
+    database_address              = aws_db_instance.postgres.address
     database_name                 = aws_db_instance.postgres.name
     postgres_username             = aws_db_instance.postgres.username
     postgres_password             = "${var.postgres_password_secret_arn}:POSTGRES_PASSWORD::"
@@ -36,7 +36,7 @@ resource "aws_ecs_service" "staging" {
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_tasks.id]
-    subnets          = [aws_subnet.pub_subnet.id, aws_subnet.pub_subnet2.id]
+    subnets          = aws_subnet.private.*.id
     assign_public_ip = true
   }
 

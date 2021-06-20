@@ -1,6 +1,6 @@
 resource "aws_lb" "staging" {
   name               = "alb"
-  subnets            = [aws_subnet.pub_subnet.id, aws_subnet.pub_subnet2.id]
+  subnets            = aws_subnet.public.*.id
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb.id]
 
@@ -25,7 +25,7 @@ resource "aws_lb_target_group" "staging" {
   name        = "${var.app_name}-alb-tg"
   port        = 80
   protocol    = "HTTP"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = aws_vpc.default.id
   target_type = "ip"
 
   health_check {
