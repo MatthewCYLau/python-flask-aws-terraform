@@ -34,6 +34,17 @@ resource "aws_subnet" "private" {
   }
 }
 
+resource "aws_subnet" "rds" {
+  count             = 2
+  cidr_block        = cidrsubnet(aws_vpc.default.cidr_block, 8, 4 + count.index)
+  availability_zone = data.aws_availability_zones.available_zones.names[count.index]
+  vpc_id            = aws_vpc.default.id
+
+  tags = {
+    Name = "RDS Private Subnet ${count.index}"
+  }
+}
+
 resource "aws_internet_gateway" "gateway" {
   vpc_id = aws_vpc.default.id
 }
@@ -115,5 +126,5 @@ resource "aws_security_group" "ecs_tasks" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
 }

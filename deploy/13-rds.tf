@@ -13,7 +13,7 @@ resource "aws_db_instance" "postgres" {
 
 resource "aws_db_subnet_group" "postgres" {
   name       = "postgres-subnet"
-  subnet_ids = aws_subnet.private.*.id
+  subnet_ids = aws_subnet.rds.*.id
 
   tags = {
     Name = "PostgreSQL DB subnet group"
@@ -32,6 +32,7 @@ resource "aws_security_group" "rds" {
     cidr_blocks     = ["0.0.0.0/0"]
     security_groups = [aws_security_group.ecs_tasks.id]
   }
+
   egress {
     protocol    = "-1"
     from_port   = 0
@@ -42,8 +43,4 @@ resource "aws_security_group" "rds" {
 
 data "aws_secretsmanager_secret_version" "rds_password" {
   secret_id = "RDSPostgresPassword"
-}
-
-output "postgres_db_address" {
-  value = aws_db_instance.postgres.address
 }
