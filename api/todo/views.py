@@ -31,9 +31,8 @@ def add_todo():
 
     name = request.json["name"]
     description = request.json["description"]
-    completed = False
 
-    new_todo = Todo(name=name, description=description, completed=completed)
+    new_todo = Todo(name=name, description=description)
 
     try:
         db.session.add(new_todo)
