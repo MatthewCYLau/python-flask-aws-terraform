@@ -9,6 +9,8 @@ COPY . /app
 
 RUN pip3 --no-cache-dir install -r requirements.txt
 
+RUN ENV=CI pytest
+
 EXPOSE 5000
 
 RUN ["chmod", "+x", "./entrypoint.sh"]

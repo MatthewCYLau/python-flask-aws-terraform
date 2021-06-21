@@ -31,6 +31,10 @@
       {
         "name": "POSTGRES_USERNAME",
         "value": "${postgres_username}"
+      },
+      {
+        "name": "ENV",
+        "value": "PROD"
       }
     ],
     "secrets": [{
