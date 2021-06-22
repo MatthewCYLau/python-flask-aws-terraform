@@ -24,6 +24,8 @@ db = SQLAlchemy(app)
 
 
 from api.todo.models import Todo
+from api.user.models import User
+
 
 # no need to set-up database during image build process
 if os.environ.get("ENV") != "CI":
@@ -38,3 +40,4 @@ def ping():
 
 
 from api.todo import views
+from api.user import views

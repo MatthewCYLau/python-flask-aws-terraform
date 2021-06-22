@@ -1,5 +1,3 @@
-import requests
-import random
 from api import app
 from api.todo.models import Todo
 from flask import jsonify, request
@@ -31,8 +29,9 @@ def add_todo():
 
     name = request.json["name"]
     description = request.json["description"]
+    user_id = request.json["user_id"]
 
-    new_todo = Todo(name=name, description=description)
+    new_todo = Todo(name=name, description=description, user_id=user_id)
 
     try:
         db.session.add(new_todo)
