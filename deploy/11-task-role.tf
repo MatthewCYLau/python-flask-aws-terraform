@@ -43,7 +43,7 @@ resource "aws_iam_role_policy" "ecs_task_execution_role" {
         "secretsmanager:GetSecretValue"
       ],
       "Resource": [
-        "${var.postgres_password_secret_arn}"
+        "${data.aws_secretsmanager_secret.postgresql_password_secret.id}"
       ]
     }
   ]

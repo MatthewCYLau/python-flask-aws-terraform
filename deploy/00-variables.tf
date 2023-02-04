@@ -11,5 +11,3 @@ variable "environment" {}
 variable "default_region" {}
 
 variable "docker_username" {}
-
-variable "postgres_password_secret_arn" {}

@@ -8,7 +8,7 @@ data "template_file" "python_app" {
     database_address              = aws_db_instance.postgres.address
     database_name                 = aws_db_instance.postgres.name
     postgres_username             = aws_db_instance.postgres.username
-    postgres_password             = "${var.postgres_password_secret_arn}:POSTGRES_PASSWORD::"
+    postgres_password             = "${data.aws_secretsmanager_secret.postgresql_password_secret.id}:POSTGRES_PASSWORD::"
   }
 }
 

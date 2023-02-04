@@ -1,7 +1,7 @@
 resource "aws_db_instance" "postgres" {
   allocated_storage      = 10
   engine                 = "postgres"
-  engine_version         = "9.6.20"
+  engine_version         = "13.7"
   instance_class         = "db.t3.micro"
   name                   = "flaskdb"
   username               = "foo"
@@ -39,8 +39,4 @@ resource "aws_security_group" "rds" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-data "aws_secretsmanager_secret_version" "rds_password" {
-  secret_id = "RDSPostgresPassword"
 }
