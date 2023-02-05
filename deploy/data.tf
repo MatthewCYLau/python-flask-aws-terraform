@@ -1,7 +1,7 @@
 data "aws_secretsmanager_secret" "postgresql_password_secret" {
-  name = "RDSPostgresPassword"
+  name = local.rds_postgress_password_secret_name
 }
 
 data "aws_secretsmanager_secret_version" "rds_password" {
-  secret_id = "RDSPostgresPassword"
+  secret_id = local.rds_postgress_password_secret_name
 }
